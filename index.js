@@ -7,6 +7,12 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/users', (req, res) => res.sendFile(__dirname + '/users.json'))
 
+
+app.get('/users/:id', (req, res) => {
+    const id = req.params.id;
+    res.sendFile(`${__dirname}/users[${id}].json`);
+})
+
 app.listen(port, (err, res) => {
     if (err) {
         console.log(err)
