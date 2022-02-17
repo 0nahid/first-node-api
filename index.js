@@ -10,10 +10,7 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/users', (req, res) => res.sendFile(__dirname + '/users.json'))
 
 // dynamic api
-app.get('/users/:id', (req, res) => {
-    // const id = req.params.id;
-    res.send(user[req.params.id]);
-})
+app.get('/users/:id', (req, res) => res.send(user[req.params.id]))
 
 app.listen(port, (err, res) => {
     if (err) {
