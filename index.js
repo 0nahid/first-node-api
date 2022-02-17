@@ -11,9 +11,8 @@ app.get('/users', (req, res) => res.sendFile(__dirname + '/users.json'))
 
 // dynamic api
 app.get('/users/:id', (req, res) => {
-    const id = req.params.id;
-    const people = user[id]
-    res.send(people);
+    // const id = req.params.id;
+    res.send(user[req.params.id]);
 })
 
 app.listen(port, (err, res) => {
