@@ -13,10 +13,5 @@ app.get('/users', (req, res) => res.sendFile(__dirname + '/users.json'))
 app.get('/users/:id', (req, res) => res.send(user[req.params.id]))
 
 app.listen(port, (err, res) => {
-    if (err) {
-        console.log(err)
-    }
-    else {
-        console.log(`Server is listening on port ${port}`)
-    }
+    (err) ? console.log(err) : console.log(`Server is listening on port ${port}`)
 });
