@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+var cors = require('cors')
+app.use(cors())
 const user = require('./user.js');
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
