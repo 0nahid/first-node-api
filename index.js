@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
+// Load the api files
 app.get('/users', (req, res) => res.sendFile(__dirname + '/users.json'))
 
 // dynamic api
