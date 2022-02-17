@@ -11,6 +11,7 @@ app.get('/fruits/mango/fazli', (req, res) => res.send('Hello Fazli!'))
 
 // Load the api files
 app.get('/users', (req, res) => {
+    // use search query params to filter the results
     const search = req.query.search;
     search ? res.send(user.filter(user => user.name.toLowerCase().includes(search))) : res.sendFile(__dirname + '/users.json');
     // res.sendFile(__dirname + '/users.json')
