@@ -3,7 +3,7 @@ const app = express();
 var cors = require("cors");
 app.use(cors());
 app.use(express.json());
-const user = require("./user.js");
+const users = require("./user.js");
 
 const port = process.env.PORT || 5000;
 
@@ -17,19 +17,22 @@ app.get("/users", (req, res) => {
   // use search query params to filter the results
   const search = req.query.search;
   search
-    ? res.send(user.filter((user) => user.name.toLowerCase().includes(search)))
+    ? res.send(users.filter((user) => user.name.toLowerCase().includes(search)))
     : res.sendFile(__dirname + "/users.json");
   // res.sendFile(__dirname + '/users.json')
 });
 
 // App.post
 app.post("/users", (req, res) => {
+  const newUser = req.body;
+  newUser.id = users.length + 1;
+  users.push(newUser);
   console.log("hitting post", req.body);
-  res.send("hitting post");
+  res.json(newUser);
 });
 
 // dynamic api
-app.get("/users/:id", (req, res) => res.send(user[req.params.id]));
+app.get("/users/:id", (req, res) => res.send(users[req.params.id]));
 
 app.listen(port, (err, res) => {
   err ? console.log(err) : console.log(`Server is listening on port ${port}`);
